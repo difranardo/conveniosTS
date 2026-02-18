@@ -1,4 +1,4 @@
-﻿import { logger } from "./infrastructure/config/settings";
+import { logger } from "./infrastructure/config/settings";
 import { HappeoAdapter } from "./infrastructure/adapters/happeo/happeo-adapter";
 import { SqlAdapter } from "./infrastructure/adapters/sql/sql-adapter";
 import { SmtpAdapter } from "./infrastructure/adapters/smtp/smtp-adapter";
@@ -27,7 +27,7 @@ async function main(): Promise<void> {
     process.env.SMTP_PASS ?? "",
   );
 
-  const service = new NotificationService(happeo, sql, smtp);
+  const service = new NotificationService(happeo, sql, smtp, logger);
 
   try {
     const hours = Number(process.env.SEARCH_WINDOW_HOURS ?? 24);
